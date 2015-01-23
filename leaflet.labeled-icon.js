@@ -17,7 +17,11 @@ L.LabeledIcon = L.Icon.extend({
 
         var label = document.createElement('label');
             
-        label.innerHTML = options.html !== false ? options.html : '';
+        if ( typeof options.html === 'string' ) {
+            label.innerHTML = options.html !== false ? options.html : '';
+        } else {
+            label.appendChild(options.html);
+        }
         div.style.position = 'relative';
         label.style.position = 'absolute';
         label.style.display  = 'block';
